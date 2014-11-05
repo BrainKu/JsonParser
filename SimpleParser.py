@@ -10,11 +10,15 @@ class SimpleParser:
     def load(self, s):
         """读取json格式数据，输入s为一个json字符串，无返回值"""
         index = 0
+        s.strip()
+        print s
         length = len(s)
         while 1:
             if index == length:
                 break
             elif s[index] == " ":
+                index += 1
+            elif s[index] == "\n":
                 index += 1
             elif s[index] == '{':
                 objdict, index = self.getobject(index + 1, s)
@@ -24,7 +28,8 @@ class SimpleParser:
                 else:
                     raise SyntaxError("Invalid json string:{}".format(s))
             else:
-                raise SyntaxError("Invalid string {}".format(s))
+                raise ValueError("Invalid string charcter {} in position {}".format(s[index], index))
+                # raise SyntaxError("Invalid string {}".format(s))
 
     def dump(self):
         """根据类中数据返回json字符串"""
@@ -39,7 +44,11 @@ class SimpleParser:
 
     def dumpJson(self, f):
         """将类中的内容以json格式存入文件，文件若存在则覆盖，文件操作失败抛出异常"""
-        pass
+        try:
+            with open(f, 'w') as fs:
+                fs.write(self.dump())
+        except IOError:
+            print "File not exists: {}".format(f)
 
     def loadDict(self, d):
         """读取dict中的数据，存入类中，若遇到不是字符串的key则忽略"""
@@ -145,6 +154,7 @@ class SimpleParser:
         key = ""
         value = ""
         idx = index
+        string.strip()
         length = len(string)
         while 1:
             if string[idx] == '"':
@@ -161,7 +171,7 @@ class SimpleParser:
             elif string[idx] == '[':
                 value, idx = self.getlist(idx + 1, string)
                 objdict[key] = value
-            elif "1" <= string[idx] <= "9":
+            elif "0" <= string[idx] <= "9" or string[idx] == '-' or string[idx] == '+':
                 value, idx = self.getnumber(idx, string)
                 objdict[key] = value
             elif string[idx] == 't':
@@ -189,13 +199,17 @@ class SimpleParser:
             elif string[idx] == ',':
                 idx += 1
                 haskey = False
+            elif string[idx] == '\n':
+                idx += 1
             elif idx == length:
                 raise SyntaxError("Out of length")
             else:
+                print string[idx:idx + 20]
                 raise SyntaxError("Exception happen in symbol {} in index {}".format(string[idx], idx))
 
     def getlist(self, index, string):
         global idx, obj
+        string.rstrip('\n')
         length = len(string)
         idx = index
         objlist = list()
@@ -217,7 +231,7 @@ class SimpleParser:
                 objlist.append(obj)
             elif string[idx] == ']':
                 return objlist, idx + 1
-            elif "1" <= string[idx] <= "9":
+            elif "0" <= string[idx] <= "9" or string[idx] == '-' or string[idx] == '+':
                 obj, idx = self.getnumber(idx, string)
                 objlist.append(obj)
             elif string[idx] == 't':
@@ -241,7 +255,10 @@ class SimpleParser:
                     objlist.append(obj)
                 else:
                     raise SyntaxError("Invalid Symbol:{}".format(string[idx:idx + 4]))
+            elif string[idx] == '\n':
+                idx += 1
             else:
+                print "objlist", objlist
                 raise SyntaxError("Invalid Symbol {} in index {}".format(string[idx], idx))
 
     def getnumber(self, nindex, string):
@@ -289,16 +306,24 @@ class SimpleParser:
         idx = sindex
         while 1:
             if string[idx] == '\\':
+                print string[idx]
                 idx += 1
                 if idx == len(string):
                     raise SyntaxError("Invalid String")
                 nextchar = string[idx]
-                if nextchar == '"' or nextchar == '\\' or nextchar == '/' or nextchar == "'":
-                    nstring += nextchar
+                if nextchar == '"' or nextchar == '\\' or nextchar == '/' or nextchar == 'b' \
+                        or nextchar == 'f' or nextchar == 'n' or nextchar == 'r' or nextchar == 't':
+                    nstring += '\\' + nextchar
+                    idx += 1
+                    print "nstring", nstring
                 else:
                     nstring += nextchar
+                    idx += 1
             elif string[idx] == '"':
                 return nstring, idx + 1
+            elif string[idx] == '\b' or string[idx] == '\f' \
+                    or string[idx] == '\n' or string[idx] == '\r' or string[idx] == '\t':
+                raise ValueError("Invalid symbol {} in index {}".format(string[idx], idx))
             else:
                 nstring += string[idx]
                 idx += 1

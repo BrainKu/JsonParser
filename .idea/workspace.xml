@@ -4,7 +4,6 @@
     <list default="true" id="70394fa9-c2dc-4dab-9ee4-e83c1fe61821" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SimpleParser.py" afterPath="$PROJECT_DIR$/SimpleParser.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SimpleParserTest.py" afterPath="$PROJECT_DIR$/SimpleParserTest.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JsonParser.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -16,30 +15,33 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_object.coverage" NAME="Unittest MyTestCase.test_object Coverage Results" MODIFIED="1415165587758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_is_valid_object.coverage" NAME="Unittest MyTestCase.test_is_valid_object Coverage Results" MODIFIED="1415080310046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_scanonce.coverage" NAME="Unittest MyTestCase.test_scanonce Coverage Results" MODIFIED="1415087392923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_content.coverage" NAME="Unittest MyTestCase.test_content Coverage Results" MODIFIED="1415080472305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_innerconver.coverage" NAME="Unittest MyTestCase.test_innerconver Coverage Results" MODIFIED="1415159169585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_load_file.coverage" NAME="Unittest MyTestCase.test_load_file Coverage Results" MODIFIED="1415185090860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittests_in_MyTestCase.coverage" NAME="Unittests in MyTestCase Coverage Results" MODIFIED="1415188562767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_innerjson.coverage" NAME="Unittest MyTestCase.test_innerjson Coverage Results" MODIFIED="1415163594347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittests_in_JsonParserTest.coverage" NAME="Unittests in JsonParserTest Coverage Results" MODIFIED="1415104472139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Load.coverage" NAME="Load Coverage Results" MODIFIED="1415086749864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_translate.coverage" NAME="Unittest MyTestCase.test_translate Coverage Results" MODIFIED="1415188581610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_object.coverage" NAME="Unittest MyTestCase.test_object Coverage Results" MODIFIED="1415165587758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_dump_file.coverage" NAME="Unittest MyTestCase.test_dump_file Coverage Results" MODIFIED="1415181289989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_load.coverage" NAME="Unittest MyTestCase.test_load Coverage Results" MODIFIED="1415188033708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittests_in_SimpleParserTest.coverage" NAME="Unittests in SimpleParserTest Coverage Results" MODIFIED="1415175187243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_load.coverage" NAME="Unittest MyTestCase.test_load Coverage Results" MODIFIED="1415173343215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_dump_dict.coverage" NAME="Unittest MyTestCase.test_dump_dict Coverage Results" MODIFIED="1415174007118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$JsonParser.coverage" NAME="JsonParser Coverage Results" MODIFIED="1415091722237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_content.coverage" NAME="Unittest MyTestCase.test_content Coverage Results" MODIFIED="1415080472305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_dump_list.coverage" NAME="Unittest MyTestCase.test_dump_list Coverage Results" MODIFIED="1415173131864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$SimpleParser.coverage" NAME="SimpleParser Coverage Results" MODIFIED="1415163536493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_list.coverage" NAME="Unittest MyTestCase.test_list Coverage Results" MODIFIED="1415170814911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_innerconver.coverage" NAME="Unittest MyTestCase.test_innerconver Coverage Results" MODIFIED="1415159169585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_dumpDict.coverage" NAME="Unittest MyTestCase.test_dumpDict Coverage Results" MODIFIED="1415180008688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_load_json.coverage" NAME="Unittest MyTestCase.test_load_json Coverage Results" MODIFIED="1415175727900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_dump.coverage" NAME="Unittest MyTestCase.test_dump Coverage Results" MODIFIED="1415173946557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_load_json.coverage" NAME="Unittest MyTestCase.test_load_json Coverage Results" MODIFIED="1415175727900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_dumpDict.coverage" NAME="Unittest MyTestCase.test_dumpDict Coverage Results" MODIFIED="1415180008688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_number.coverage" NAME="Unittest MyTestCase.test_number Coverage Results" MODIFIED="1415166433489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_load_file.coverage" NAME="Unittest MyTestCase.test_load_file Coverage Results" MODIFIED="1415178640664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JsonParser$Unittests_in_MyTestCase.coverage" NAME="Unittests in MyTestCase Coverage Results" MODIFIED="1415180063449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_string.coverage" NAME="Unittest MyTestCase.test_string Coverage Results" MODIFIED="1415191082589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittests_in_MyTestCase__1_.coverage" NAME="Unittests in MyTestCase (1) Coverage Results" MODIFIED="1415158743325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_innerjson.coverage" NAME="Unittest MyTestCase.test_innerjson Coverage Results" MODIFIED="1415163594347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_loaddict.coverage" NAME="Unittest MyTestCase.test_loaddict Coverage Results" MODIFIED="1415176543484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JsonParser$Unittests_in_JsonParserTest.coverage" NAME="Unittests in JsonParserTest Coverage Results" MODIFIED="1415104472139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_value_is_number.coverage" NAME="Unittest MyTestCase.test_value_is_number Coverage Results" MODIFIED="1415092269516" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JsonParser$Load.coverage" NAME="Load Coverage Results" MODIFIED="1415086749864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -56,19 +58,16 @@
       <file leaf-file-name="SimpleParser.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SimpleParser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3967742" vertical-offset="519" max-vertical-offset="1139">
-              <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.39184397" vertical-offset="0" max-vertical-offset="4131">
+              <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
               <folding>
-                <element signature="e#1184#1413#0" expanded="false" />
-                <element signature="e#1447#1520#0" expanded="false" />
-                <element signature="e#1556#1996#0" expanded="false" />
-                <element signature="e#2032#2397#0" expanded="false" />
-                <element signature="e#2445#3265#0" expanded="false" />
-                <element signature="e#3314#4087#0" expanded="false" />
-                <element signature="e#4137#6300#0" expanded="false" />
-                <element signature="e#6348#8347#0" expanded="false" />
-                <element signature="e#8398#9975#0" expanded="false" />
-                <element signature="e#10026#10678#0" expanded="false" />
+                <element signature="e#1291#1496#0" expanded="false" />
+                <element signature="e#1533#1762#0" expanded="false" />
+                <element signature="e#1796#1869#0" expanded="false" />
+                <element signature="e#1905#2345#0" expanded="false" />
+                <element signature="e#2381#2746#0" expanded="false" />
+                <element signature="e#2794#3614#0" expanded="false" />
+                <element signature="e#3663#4436#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -77,8 +76,8 @@
       <file leaf-file-name="SimpleParserTest.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SimpleParserTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1743" max-vertical-offset="2363">
-              <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="128" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1426" max-vertical-offset="3621">
+              <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding>
                 <element signature="e#39#54#0" expanded="true" />
               </folding>
@@ -90,8 +89,30 @@
         <entry file="file://C:/Python27/Lib/json/tests/test_float.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-              <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_pass1.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/json/tests/test_pass1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1445">
+              <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="24" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_unicode.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/json/tests/test_unicode.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1547">
+              <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,16 +134,16 @@
         <option value="$PROJECT_DIR$/Back.py" />
         <option value="$PROJECT_DIR$/JsonParserTest.py" />
         <option value="$PROJECT_DIR$/JsonParser.py" />
-        <option value="$PROJECT_DIR$/SimpleParserTest.py" />
         <option value="$PROJECT_DIR$/SimpleParser.py" />
+        <option value="$PROJECT_DIR$/SimpleParserTest.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="141" />
+    <option name="y" value="67" />
+    <option name="width" value="1648" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -263,7 +284,7 @@
       <console-settings />
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in MyTestCase">
+  <component name="RunManager" selected="Python tests.Unittest MyTestCase.test_string">
     <configuration default="false" name="Unittest MyTestCase.test_load_file" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -278,81 +299,6 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SimpleParserTest.py" />
       <option name="CLASS_NAME" value="MyTestCase" />
       <option name="METHOD_NAME" value="test_load_file" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest MyTestCase.test_load_json" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="JsonParser" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SimpleParserTest.py" />
-      <option name="CLASS_NAME" value="MyTestCase" />
-      <option name="METHOD_NAME" value="test_load_json" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest MyTestCase.test_loaddict" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="JsonParser" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SimpleParserTest.py" />
-      <option name="CLASS_NAME" value="MyTestCase" />
-      <option name="METHOD_NAME" value="test_loaddict" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest MyTestCase.test_dumpDict" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="JsonParser" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SimpleParserTest.py" />
-      <option name="CLASS_NAME" value="MyTestCase" />
-      <option name="METHOD_NAME" value="test_dumpDict" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -380,6 +326,81 @@
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest MyTestCase.test_translate" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="JsonParser" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SimpleParserTest.py" />
+      <option name="CLASS_NAME" value="MyTestCase" />
+      <option name="METHOD_NAME" value="test_translate" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest MyTestCase.test_load" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="JsonParser" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SimpleParserTest.py" />
+      <option name="CLASS_NAME" value="MyTestCase" />
+      <option name="METHOD_NAME" value="test_load" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest MyTestCase.test_string" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="JsonParser" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SimpleParserTest.py" />
+      <option name="CLASS_NAME" value="MyTestCase" />
+      <option name="METHOD_NAME" value="test_string" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
@@ -541,18 +562,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_load_file" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_load_json" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_loaddict" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_dumpDict" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in MyTestCase" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in MyTestCase" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_translate" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_load" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_string" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in MyTestCase" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_dumpDict" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_load_file" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_loaddict" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_load_json" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_string" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_translate" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in MyTestCase" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_load" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest MyTestCase.test_load_file" />
       </list>
     </recent_temporary>
   </component>
@@ -589,19 +610,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="141" y="67" width="1648" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3481081" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17537314" sideWeight="0.49913043" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27292112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17506297" sideWeight="0.49913043" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39875388" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39930955" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5008696" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29837838" sideWeight="0.2595949" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29837838" sideWeight="0.74040514" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31760645" sideWeight="0.25944585" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31760645" sideWeight="0.73992443" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -647,16 +668,13 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2447" max-vertical-offset="3502">
           <caret line="170" column="0" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
           <folding>
-            <element signature="e#1184#1413#0" expanded="false" />
-            <element signature="e#1447#1520#0" expanded="false" />
-            <element signature="e#1556#1996#0" expanded="false" />
-            <element signature="e#2032#2397#0" expanded="false" />
-            <element signature="e#2445#3265#0" expanded="false" />
-            <element signature="e#3314#4087#0" expanded="false" />
-            <element signature="e#4137#6300#0" expanded="false" />
-            <element signature="e#6348#8347#0" expanded="false" />
-            <element signature="e#8398#9975#0" expanded="false" />
-            <element signature="e#10026#10678#0" expanded="false" />
+            <element signature="e#1291#1496#0" expanded="false" />
+            <element signature="e#1533#1762#0" expanded="false" />
+            <element signature="e#1796#1869#0" expanded="false" />
+            <element signature="e#1905#2345#0" expanded="false" />
+            <element signature="e#2381#2746#0" expanded="false" />
+            <element signature="e#2794#3614#0" expanded="false" />
+            <element signature="e#3663#4436#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -692,16 +710,13 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2873">
           <caret line="135" column="20" selection-start-line="135" selection-start-column="20" selection-end-line="135" selection-end-column="20" />
           <folding>
-            <element signature="e#1184#1413#0" expanded="false" />
-            <element signature="e#1447#1520#0" expanded="false" />
-            <element signature="e#1556#1996#0" expanded="false" />
-            <element signature="e#2032#2397#0" expanded="false" />
-            <element signature="e#2445#3265#0" expanded="false" />
-            <element signature="e#3314#4087#0" expanded="false" />
-            <element signature="e#4137#6300#0" expanded="false" />
-            <element signature="e#6348#8347#0" expanded="false" />
-            <element signature="e#8398#9975#0" expanded="false" />
-            <element signature="e#10026#10678#0" expanded="false" />
+            <element signature="e#1291#1496#0" expanded="false" />
+            <element signature="e#1533#1762#0" expanded="false" />
+            <element signature="e#1796#1869#0" expanded="false" />
+            <element signature="e#1905#2345#0" expanded="false" />
+            <element signature="e#2381#2746#0" expanded="false" />
+            <element signature="e#2794#3614#0" expanded="false" />
+            <element signature="e#3663#4436#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -744,16 +759,13 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="2295">
           <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
           <folding>
-            <element signature="e#1184#1413#0" expanded="false" />
-            <element signature="e#1447#1520#0" expanded="false" />
-            <element signature="e#1556#1996#0" expanded="false" />
-            <element signature="e#2032#2397#0" expanded="false" />
-            <element signature="e#2445#3265#0" expanded="false" />
-            <element signature="e#3314#4087#0" expanded="false" />
-            <element signature="e#4137#6300#0" expanded="false" />
-            <element signature="e#6348#8347#0" expanded="false" />
-            <element signature="e#8398#9975#0" expanded="false" />
-            <element signature="e#10026#10678#0" expanded="false" />
+            <element signature="e#1291#1496#0" expanded="false" />
+            <element signature="e#1533#1762#0" expanded="false" />
+            <element signature="e#1796#1869#0" expanded="false" />
+            <element signature="e#1905#2345#0" expanded="false" />
+            <element signature="e#2381#2746#0" expanded="false" />
+            <element signature="e#2794#3614#0" expanded="false" />
+            <element signature="e#3663#4436#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -825,13 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/json/decoder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6579">
-          <caret line="109" column="22" selection-start-line="109" selection-start-column="22" selection-end-line="109" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JsonParserTest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.224138" vertical-offset="187" max-vertical-offset="969">
@@ -870,14 +875,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/json/tests/test_float.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JsonParser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3808">
@@ -886,10 +883,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Python27/Lib/json/decoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33225808" vertical-offset="5931" max-vertical-offset="6579">
+          <caret line="365" column="0" selection-start-line="365" selection-start-column="0" selection-end-line="365" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <caret line="0" column="44" selection-start-line="0" selection-start-column="44" selection-end-line="0" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/json/tests/test_unicode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1547">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/json/tests/test_float.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/json/tests/test_pass1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1445">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="24" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SimpleParserTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1743" max-vertical-offset="2363">
-          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="128" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1426" max-vertical-offset="3621">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding>
             <element signature="e#39#54#0" expanded="true" />
           </folding>
@@ -898,19 +937,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SimpleParser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3967742" vertical-offset="519" max-vertical-offset="1139">
-          <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.39184397" vertical-offset="0" max-vertical-offset="4131">
+          <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
           <folding>
-            <element signature="e#1184#1413#0" expanded="false" />
-            <element signature="e#1447#1520#0" expanded="false" />
-            <element signature="e#1556#1996#0" expanded="false" />
-            <element signature="e#2032#2397#0" expanded="false" />
-            <element signature="e#2445#3265#0" expanded="false" />
-            <element signature="e#3314#4087#0" expanded="false" />
-            <element signature="e#4137#6300#0" expanded="false" />
-            <element signature="e#6348#8347#0" expanded="false" />
-            <element signature="e#8398#9975#0" expanded="false" />
-            <element signature="e#10026#10678#0" expanded="false" />
+            <element signature="e#1291#1496#0" expanded="false" />
+            <element signature="e#1533#1762#0" expanded="false" />
+            <element signature="e#1796#1869#0" expanded="false" />
+            <element signature="e#1905#2345#0" expanded="false" />
+            <element signature="e#2381#2746#0" expanded="false" />
+            <element signature="e#2794#3614#0" expanded="false" />
+            <element signature="e#3663#4436#0" expanded="false" />
           </folding>
         </state>
       </provider>
