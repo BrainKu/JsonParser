@@ -12,19 +12,78 @@ class SimpleParser:
         length = len(s)
         while 1:
             if index == length:
-                raise SyntaxError("Invalid string {}".format(s))
+                break
             elif s[index] == " ":
                 index += 1
             elif s[index] == '{':
                 objdict, index = self.getobject(index + 1, s)
-                assert objdict is not None
                 self.pDict = objdict
                 if index == length:  # 由于假设最外层是object，读完一个object后如果还剩下字符（包含空字符）都将报错
-                    return
+                    break
                 else:
                     raise SyntaxError("Invalid json string")
             else:
-                index += 1
+                raise SyntaxError("Invalid string {}".format(s))
+
+    def dump(self):
+        rstring = ""
+        objdict = self.pDict
+        rstring = self.dumpdict(objdict, rstring)
+        return rstring
+
+    def dumpdict(self, odic, string):
+        isfirstobj = True
+        for key in odic:
+            if isfirstobj:
+                isfirstobj = False
+            else:
+                string += ','
+            string += '{"' + key + '":'
+            otype = type(odic[key])
+            if otype == str:
+                string += '"' + odic[key] + '"'
+            elif otype == dict:
+                string = self.dumpdict(odic[key], string)
+            elif otype == list:
+                string = self.dumplist(odic[key], string)
+            elif otype == bool:
+                if odic[key]:
+                    string += 'true'
+                else:
+                    string += 'false'
+            elif odic[key] is None:
+                string += 'null'
+            else:
+                string += str(odic[key])
+            string += '}'
+        return string
+
+    def dumplist(self, olist, string):
+        isfirstobj = True
+        string += '['
+        for value in olist:
+            if isfirstobj:
+                isfirstobj = False
+            else:
+                string += ','
+            otype = type(value)
+            if otype == str:
+                string += '"' + value + '"'
+            elif otype == dict:
+                string = self.dumpdict(value, string)
+            elif otype == list:
+                string = self.dumplist(value, string)
+            elif value is None:
+                string += 'null'
+            elif otype == bool:
+                if value:
+                    string += 'true'
+                else:
+                    string += 'false'
+            else:
+                string += str(value)
+        string += ']'
+        return string
 
     def getobject(self, index, string):
         global haskey, idx, key, value
@@ -193,6 +252,3 @@ class SimpleParser:
             else:
                 nstring += string[idx]
                 idx += 1
-
-
-
