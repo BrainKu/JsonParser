@@ -27,6 +27,32 @@ class MyTestCase(unittest.TestCase):
             self.sp.load(self.sp.dump())
             print self.sp.pDict
 
+    def test_loadDict(self):
+        d0 = {"k": "v", "k1": {"k1": {"k1": "v"}}}
+        d1 = {"k": "v", 123: "value", None: "value", True: "value"}
+        d2 = {(1, 2, 3): "value"}
+        self.sp.loadDict(d0)
+        self.assertEqual(2, len(self.sp.pDict))
+        self.sp.loadDict(d1)
+        self.assertEqual(1, len(self.sp.pDict))
+        self.sp.loadDict(d2)
+        self.assertEqual(0, len(self.sp.pDict))
+
+    def test_dumpDict(self):
+        c0 = {"k": "v", "k1": {"k1": {"k1": "v"}}}
+        c1 = {u"k": "v"}
+        c2 = {}
+        d0 = {"k": "v", "k1": {"k1": {"k1": "v"}}}
+        d1 = {"k": "v", 123: "value", None: "value", True: "value"}
+        d2 = {(1, 2, 3): "value"}
+        self.sp.loadDict(d0)
+        self.assertEqual(0, cmp(c0, self.sp.dumpDict()))
+        print self.sp.dumpDict()
+        self.sp.loadDict(d1)
+        self.assertEqual(0, cmp(c1, self.sp.dumpDict()))
+        self.sp.loadDict(d2)
+        self.assertEqual(0, cmp(c2, self.sp.dumpDict()))
+
     def test_list(self):
         objlist = ['["abc","cde","efg",null,true,false]',
                    '["abc",["efg"]]',
@@ -66,6 +92,11 @@ class MyTestCase(unittest.TestCase):
             print number
             self.assertRaises(ValueError, self.sp.getnumber, 0, number)
 
+    def test_string(self):
+        string = '["abcdefg", "abcd\n", "ab123"]'
+        invalidstr = ['"', '\"', "\\"]
+
+
     def test_dump_dict(self):
         odictlist = [{"key": {"key2": True}},
                      {"k1": {"k1": {"k1": "v"}}},
@@ -83,6 +114,19 @@ class MyTestCase(unittest.TestCase):
             print result
             self.sp.load(rstring)
             self.assertEqual(self.sp.dump(), rstring)
+
+    # def test_load_file(self):
+    #     fstring = ""
+    #     try:
+    #         filename = "test.txt"
+    #         with open(filename, encoding='utf-8', mode='w+') as f:
+    #             fstring = f.read()
+    #     except IOError:
+    #         print "Cannot found file ", filename
+    #
+    #     print fstring
+    #     self.sp.load(fstring)
+    #     print self.sp.dump()
 
 
 if __name__ == '__main__':

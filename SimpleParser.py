@@ -8,6 +8,7 @@ class SimpleParser:
         self.pDict = dict()
 
     def load(self, s):
+        """读取json格式数据，输入s为一个json字符串，无返回值"""
         index = 0
         length = len(s)
         while 1:
@@ -21,15 +22,67 @@ class SimpleParser:
                 if index == length:  # 由于假设最外层是object，读完一个object后如果还剩下字符（包含空字符）都将报错
                     break
                 else:
-                    raise SyntaxError("Invalid json string")
+                    raise SyntaxError("Invalid json string:{}".format(s))
             else:
                 raise SyntaxError("Invalid string {}".format(s))
 
     def dump(self):
+        """根据类中数据返回json字符串"""
         rstring = ""
         objdict = self.pDict
         rstring = self.dumpdict(objdict, rstring)
         return rstring
+
+    def loadJson(self, f):
+        """从文件中读入json格式数据，f为文件路径"""
+        pass
+
+    def dumpJson(self, f):
+        """将类中的内容以json格式存入文件，文件若存在则覆盖，文件操作失败抛出异常"""
+        pass
+
+    def loadDict(self, d):
+        """读取dict中的数据，存入类中，若遇到不是字符串的key则忽略"""
+        self.pDict.clear()
+        for key in d:
+            vtype = type(key)
+            if vtype is str:
+                self.pDict[key] = d[key]
+            else:
+                continue
+
+    def dumpDict(self):
+        """返回一个字典，包含类中数据。所有字符均为unicode"""
+        return self.unidict(self.pDict)
+
+    def unidict(self, d):
+        ndict = dict()
+        for key in d:
+            value = d[key]
+            vtype = type(value)
+            if vtype is str:
+                ndict[unicode(key)] = unicode(value)
+            elif vtype is dict:
+                ndict[unicode(key)] = self.unidict(value)
+            elif vtype is list:
+                ndict[unicode(key)] = self.unilist(value)
+            else:
+                ndict[unicode(key)] = value
+        return ndict
+
+    def unilist(self, l):
+        nl = list()
+        for value in l:
+            vtype = type(value)
+            if vtype == str:
+                nl.append(unicode(value))
+            elif vtype == dict:
+                nl.append(self.unidict(value))
+            elif vtype == list:
+                nl.append(self.unilist(value))
+            else:
+                nl.append(value)
+        return nl
 
     def dumpdict(self, odic, string):
         isfirstobj = True
@@ -86,7 +139,7 @@ class SimpleParser:
         return string
 
     def getobject(self, index, string):
-        global haskey, idx, key, value
+        global haskey, idx
         objdict = dict()
         haskey = False
         key = ""
@@ -98,7 +151,7 @@ class SimpleParser:
                 if not haskey:
                     key, idx = self.getstring(idx + 1, string)
                 else:
-                    value, idx = SimpleParser.getstring(idx + 1, string)
+                    value, idx = self.getstring(idx + 1, string)
                     objdict[key] = value
             elif string[idx] == '{':
                 value, idx = self.getobject(idx + 1, string)
@@ -139,7 +192,7 @@ class SimpleParser:
             elif idx == length:
                 raise SyntaxError("Out of length")
             else:
-                raise Exception("Exception happen in symbol {} in index {}".format(string[idx], idx))
+                raise SyntaxError("Exception happen in symbol {} in index {}".format(string[idx], idx))
 
     def getlist(self, index, string):
         global idx, obj
@@ -160,7 +213,7 @@ class SimpleParser:
                 obj, idx = self.getlist(idx + 1, string)
                 objlist.append(obj)
             elif string[idx] == '"':
-                obj, idx = SimpleParser.getstring(idx + 1, string)
+                obj, idx = self.getstring(idx + 1, string)
                 objlist.append(obj)
             elif string[idx] == ']':
                 return objlist, idx + 1
@@ -182,7 +235,6 @@ class SimpleParser:
                 else:
                     raise SyntaxError("Invalid Symbol:{}".format(string[idx:idx + 5]))
             elif string[idx] == 'n':
-                # print string[idx:idx + 5]
                 if idx + 4 < length and string[idx:idx + 4] == 'null':
                     obj = None
                     idx += 4
@@ -192,8 +244,7 @@ class SimpleParser:
             else:
                 raise SyntaxError("Invalid Symbol {} in index {}".format(string[idx], idx))
 
-    @classmethod
-    def getnumber(cls, nindex, string):
+    def getnumber(self, nindex, string):
         global idx
         idx = nindex
         isfloat = False  # 是否是浮点数
@@ -231,8 +282,7 @@ class SimpleParser:
             else:
                 raise ValueError("Invalid symbol: {}".format(string[idx]))
 
-    @classmethod
-    def getstring(cls, sindex, string):
+    def getstring(self, sindex, string):
         """转义和utf未处理"""
         global nstring, idx
         nstring = ""
