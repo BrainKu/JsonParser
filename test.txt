@@ -1,1 +1,1 @@
-{"中文": [123, 123, 123, 123, null, false, true, "string", [false, true, null]]}
+\uCAFE\uBABE\uAB98\uFCDE\ubcda\uef4A\b\f\n\r\t`1~!@#$%^&*()_+-=[]{}|;:',./<>?

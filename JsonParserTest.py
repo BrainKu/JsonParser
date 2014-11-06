@@ -15,7 +15,7 @@ class MyTestCase(unittest.TestCase):
         self.complex_json = '{"a":["a","b","c","d"],"c":"d"}'
 
     def test_getlist(self):
-        liststr = r'''{"key":{"integer": 1234567890,
+        liststr = r'''[{"integer": 1234567890,
         "real": -9876.543210,
         "e": 0.123456789e-12,
         "E": 1.234567890E+34,
@@ -26,11 +26,13 @@ class MyTestCase(unittest.TestCase):
         "quote": "\"",
         "backslash": "\\",
         "unicode":"\uedda",
-        "controls": "\b\f\n\r\t"}}'''
+        "controls": "\b\f\n\r\t"}]'''
         import json
 
-        data = json.loads(liststr)
-        print json.dumps(data)
+        s1 = '"[123,123]'
+        print json.loads(liststr)
+        # print self.jp.getlist(s1, 1)
+        # print json.dumps(data)
 
     def test_getchar(self):
         c = r'\ude1c'
@@ -40,10 +42,18 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(expected, result)
 
     def test_getstring(self):
-        s = r'     "\t\\\"t\b\f  \uF234"      '
-        expected = r'\t\\\"t\b\f  \uF234'
-        result, index = self.jp.getstring(s, 0)
-        self.assertEqual(expected, result)
+        s0 = '"very simple"'
+        e0 = 'very simple'
+        s1 = r'     "\t\\\"t\b\f  \uF234"      '
+        e1 = r'\t\\\"t\b\f  \uF234'
+        s2 = r'''"`1~!@#$%^&*()_+-={':[,]}|;.</>?"'''
+        e2 = r'''`1~!@#$%^&*()_+-={':[,]}|;.</>?'''
+        # s3 = r'''"\uCAFE\uBABE\uAB98\uFCDE\ubcda\uef4A\b\f\n\r\t`1~!@#$%^&*()_+-=[]{}|;:',./<>?"'''
+        # e3 = r'''\uCAFE\uBABE\uAB98\uFCDE\ubcda\uef4A\x08\x0c\n\r\t`1~!@#$%^&*()_+-=[]{}|;:',./<>?'''
+        self.assertEqual(e0, self.jp.getstring(s0, 0)[0])
+        self.assertEqual(e1, self.jp.getstring(s1, 0)[0])
+        self.assertEqual(e2, self.jp.getstring(s2, 0)[0])
+        # self.assertEqual(e3, self.jp.getstring(s3, 0)[0])
 
     def test_getnumber(self):
         s1 = r'-0.123'

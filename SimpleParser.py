@@ -208,10 +208,9 @@ class SimpleParser:
                 raise ValueError("Invalid symbol {} in index {}".format(string[idx], idx))
 
     def getlist(self, index, string):
-        global idx, obj
         length = len(string)
         idx = index
-        isEmpty = True
+        hasobject = False
         objlist = list()
         while 1:
             if idx == length:
@@ -219,21 +218,26 @@ class SimpleParser:
             elif string[idx] == ' ':
                 idx += 1
             elif string[idx] == ',':
-                idx += 1
-                if idx == length or string[idx] == ']':
-                    raise ValueError("Invalid comma in index {}".format(idx - 1))
+                if hasobject:
+                    idx += 1
+                    hasobject = False
+                else:
+                    raise ValueError("List cannot have empty value between ','")
             elif string[idx] == '{':
                 obj, idx = self.getobject(idx + 1, string)
                 objlist.append(obj)
+                hasobject = True
             elif string[idx] == '[':
                 obj, idx = self.getlist(idx + 1, string)
                 objlist.append(obj)
+                hasobject = True
             elif string[idx] == '"':
                 obj, idx = self.getstring(idx + 1, string)
                 objlist.append(obj)
+                hasobject = True
             elif string[idx] == ']':
                 return objlist, idx + 1
-            elif "0" <= string[idx] <= "9" or string[idx] == '-' or string[idx] == '+':
+            elif "0" <= string[idx] <= "9" or string[idx] == '-':
                 obj, idx = self.getnumber(idx, string)
                 objlist.append(obj)
             elif string[idx] == 't':
