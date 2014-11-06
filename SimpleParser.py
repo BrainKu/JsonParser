@@ -179,13 +179,13 @@ class SimpleParser:
                     value = True
                     idx += 4
                     objdict[key] = value
-                raise SyntaxError("Invalid Symbole {}".format(string[idx:idx + 4]))
+                raise ValueError("Invalid Symbole {}".format(string[idx:idx + 4]))
             elif string[idx] == 'f':
                 if idx + 5 < length and string[idx:idx + 5] == 'false':
                     value = False
                     idx += 5
                     objdict[key] = value
-                raise SyntaxError("Invalid Symbole {}".format(string[idx:idx + 4]))
+                raise ValueError("Invalid Symbole {}".format(string[idx:idx + 4]))
             elif string[idx] == 'n':
                 if idx + 4 < length and string[idx:idx + 4] == 'null':
                     value = None
@@ -202,24 +202,26 @@ class SimpleParser:
             elif string[idx] == '\n':
                 idx += 1
             elif idx == length:
-                raise SyntaxError("Out of length")
+                raise ValueError("Out of length")
             else:
                 print string[idx:idx + 20]
-                raise SyntaxError("Exception happen in symbol {} in index {}".format(string[idx], idx))
+                raise ValueError("Invalid symbol {} in index {}".format(string[idx], idx))
 
     def getlist(self, index, string):
         global idx, obj
-        string.rstrip('\n')
         length = len(string)
         idx = index
+        isEmpty = True
         objlist = list()
         while 1:
             if idx == length:
-                raise SyntaxError("Invalid String:{}".format(string))
+                raise ValueError("Invalid String:{}".format(string))
             elif string[idx] == ' ':
                 idx += 1
             elif string[idx] == ',':
                 idx += 1
+                if idx == length or string[idx] == ']':
+                    raise ValueError("Invalid comma in index {}".format(idx - 1))
             elif string[idx] == '{':
                 obj, idx = self.getobject(idx + 1, string)
                 objlist.append(obj)
@@ -240,29 +242,27 @@ class SimpleParser:
                     idx += 4
                     objlist.append(obj)
                 else:
-                    raise SyntaxError("Invalid Symbol:{}".format(string[idx:idx + 4]))
+                    raise ValueError("Invalid Symbol:{}".format(string[idx]))
             elif string[idx] == 'f':
                 if idx + 4 < length and string[idx:idx + 5] == 'false':
                     obj = False
                     idx += 5
                     objlist.append(obj)
                 else:
-                    raise SyntaxError("Invalid Symbol:{}".format(string[idx:idx + 5]))
+                    raise ValueError("Invalid Symbol:{}".format(string[idx:idx + 5]))
             elif string[idx] == 'n':
                 if idx + 4 < length and string[idx:idx + 4] == 'null':
                     obj = None
                     idx += 4
                     objlist.append(obj)
                 else:
-                    raise SyntaxError("Invalid Symbol:{}".format(string[idx:idx + 4]))
+                    raise ValueError("Invalid Symbol:{}".format(string[idx:idx + 4]))
             elif string[idx] == '\n':
                 idx += 1
             else:
-                print "objlist", objlist
-                raise SyntaxError("Invalid Symbol {} in index {}".format(string[idx], idx))
+                raise ValueError("Invalid Symbol {} in index {}".format(string[idx], idx))
 
     def getnumber(self, nindex, string):
-        global idx
         idx = nindex
         isfloat = False  # 是否是浮点数
         isint = True  # 是否是整数
@@ -293,7 +293,19 @@ class SimpleParser:
                         raise ValueError("Invalid string {}".format(string[nindex:idx], idx))
                 else:
                     raise ValueError("Invalid symbol:{}".format(string[idx - 1:idx + 1]))
-            elif "0" <= string[idx] <= "9":
+            elif string[idx] == "0":
+                if idx != nindex:
+                    continue
+                else:
+                    idx += 1
+                    if idx < length:
+                        if string[idx] == ".":
+                            continue
+                        else:
+                            raise ValueError("Number cannot have leading zeros")
+                    else:
+                        raise ValueError("Number cannot have leading zeros")
+            elif "1" <= string[idx] <= "9":
                 idx += 1
                 continue
             else:
@@ -304,12 +316,13 @@ class SimpleParser:
         global nstring, idx
         nstring = ""
         idx = sindex
+        length = len(string)
         while 1:
             if string[idx] == '\\':
                 print string[idx]
                 idx += 1
-                if idx == len(string):
-                    raise SyntaxError("Invalid String")
+                if idx == length:
+                    raise ValueError("Invalid symbol {} in index {}".format('\\', idx - 1))
                 nextchar = string[idx]
                 if nextchar == '"' or nextchar == '\\' or nextchar == '/' or nextchar == 'b' \
                         or nextchar == 'f' or nextchar == 'n' or nextchar == 'r' or nextchar == 't':

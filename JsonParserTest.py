@@ -13,38 +13,42 @@ class MyTestCase(unittest.TestCase):
         self.utfstring = u"中文"
         self.complex_json = '{"a":["a","b","c","d"],"c":"d"}'
 
-    # def test_something(self):
-    # self.assertEqual(True, True)
+    def test_getlist(self):
+        liststr = r'''{"key":{"integer": 1234567890,
+        "real": -9876.543210,
+        "e": 0.123456789e-12,
+        "E": 1.234567890E+34,
+        "":  23456789012E666,
+        "zero": 0,
+        "one": 1,
+        "space": " ",
+        "quote": "\"",
+        "backslash": "\\",
+        "unicode":"\uedda",
+        "controls": "\b\f\n\r\t"}}'''
+        import json
 
-    def test_content(self):
-        self.assertTrue(JsonParser.check_is_object(self.ocontent))
-        self.assertTrue(JsonParser.check_is_array(self.acontent))
+        data = json.loads(liststr)
+        print json.dumps(data)
 
-    # def test_scanonce(self):
-    # invalidstr = "{}"
-    # self.assertRaises(SyntaxError, self.jp.scanonce, invalidstr)
+    def test_getchar(self):
+        c = r'\ude1c'
+        expected = r'de1c'
+        result, index = self.jp.getchar(c, 2)
+        print result
+        self.assertEqual(expected, result)
 
-    # def test_is_valid_object(self):
-    # o1 = '{"key":"value","key2":"value2"}'
-    # o2 = '{"key":"[value1, value2]","key2":"value3"}'
-    # invalido1 = '{123:"value","key2","333"}'
-    #
-    # self.assertTrue(JsonParser.check_is_object(o1))
-    # self.assertTrue(JsonParser.check_is_object(o2))
-    # succeed = True
-    # try:
-    # self.assertFalse(JsonParser.check_is_object(invalido1))
-    # except Exception:
-    # succeed = False
-    # self.assertFalse(succeed)
+    def test_getstring(self):
+        s = r'     "\t\\\"t\b\f  \uF234"      '
+        expected = r'\t\\\"t\b\f  \uF234'
+        result, index = self.jp.getstring(s, 0)
+        self.assertEqual(expected, result)
+        result, string = self.jp.getstring(r'"  ",.', 0)
+        print type(result), result
 
-    def test_value_is_list(self):
-        validstr = "[123,333,\"content\",false,null]"
-
-    def test_value_is_number(self):
-        numbers = [12345, -12345, -123456.123, -23e10, -23E10, -23.1e10, "-23.1e-10", "-23.1e+20"]
-        for number in numbers:
-            self.assertTrue(JsonParser.check_is_number(number))
+    def test_getnumber(self):
+        fail = r'0013'
+        success = r'-123.123E-10'
 
 
 if __name__ == '__main__':
