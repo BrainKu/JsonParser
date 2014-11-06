@@ -31,48 +31,81 @@ class JsonParser():
         pass
 
     def getnumber(self, string, index):
-        isfirstzero = False
-        isfirstminus = False
+        iszerofirst = False
         hasdot = False
         haspower = False
         length = len(string)
         idx = index
         # 先检查是否含有前导0和负号
         if string[idx] == '0':
-            isfirstzero = True
+            iszerofirst = True
             idx += 1
         elif string[idx] == '-':
-            isfirstminus = True
-            idx += 1
+            if idx == length or string[idx] == ']' or string[idx] == '}' \
+                    or string[idx] == ',' or string[idx] == ' ':
+                raise ValueError("Invalid number with only -")
+            else:
+                idx += 1
+            if string[idx] == '0':
+                iszerofirst = True
+                idx += 1
+            elif '1' <= string[idx] <= '9':
+                pass
+            else:
+                raise ValueError("Number has invalid symbol {} in index {}".format(string[idx], idx))
         else:
             pass
+        if iszerofirst:
+            if idx == length or string[idx] == ']' or string[idx] == '}' \
+                    or string[idx] == ',' or string[idx] == ' ':
+                return 0, idx
+            elif string[idx] != '.' and string[idx] != 'e' and string[idx] != 'E':  # 前导0后面跟的如果不是.，E，e中的其中一个则不合法
+                raise ValueError("Invalid number with leading zero {}".format(string[idx]))
+            else:
+                pass
         while 1:
             if idx == length or string[idx] == ']' or string[idx] == '}' or string[idx] == ',':
                 if hasdot or haspower:
                     return float(string[index:idx]), idx
                 else:
-                    return long(string[index:idx]), idx
+                    return int(string[index:idx]), idx
             elif string[idx] == '.':
                 if hasdot:
                     raise ValueError("Invalid number with double dot")
-                elif isfirstzero:
-                    string[idx-1]!='0'
+                else:
                     hasdot = True
                     idx += 1
                     continue
-            elif string[idx] == 'E' or string[idx] == 'e':
-                pass
+            elif string[idx] == 'E' or string[idx] == 'e':  # 幂标志只能出现一次且不能出现在结尾
+                if haspower:
+                    raise ValueError("Invalid number with double power")
+                else:
+                    haspower = True
+                    idx += 1
+                    if self.__checkisend(string, idx):
+                        raise ValueError("Invalid number with symbol {} in index {}".format(string[idx - 1], idx))
+                    else:
+                        continue
             elif string[idx] == '+' or string[idx] == '-':
-                if string[idx - 1] != 'E' or string[idx - 1] != 'e':
+                if string[idx - 1] != 'E' and string[idx - 1] != 'e':
                     raise ValueError("Number has invalid symbol {} in index {}".format(string[idx], idx))
                 else:
                     idx += 1
+                    if self.__checkisend(string, idx):  # 单独的E-或者E+也是不合法的
+                        raise ValueError("Invalid number with symbol {} in index {}".format(string[idx - 1], idx))
                     continue
             elif '0' <= string[idx] <= '9':
-
-                pass
+                idx += 1
+                continue
             else:
                 raise ValueError("Number has invalid symbol {} in index {}".format(string[idx], idx))
+
+    def __checkisend(self, string, idx):
+        length = len(string)
+        if idx == length or string[idx] == '}' or string[idx] == ']' or string[idx] == ',':
+            return True
+        else:
+            return False
 
     def getstring(self, string, index):
         """Get string"""

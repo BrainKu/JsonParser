@@ -3,6 +3,7 @@ __author__ = 'gzs3049'
 
 import unittest
 from JsonParser import JsonParser
+import json
 
 
 class MyTestCase(unittest.TestCase):
@@ -43,12 +44,20 @@ class MyTestCase(unittest.TestCase):
         expected = r'\t\\\"t\b\f  \uF234'
         result, index = self.jp.getstring(s, 0)
         self.assertEqual(expected, result)
-        result, string = self.jp.getstring(r'"  ",.', 0)
-        print type(result), result
 
     def test_getnumber(self):
-        fail = r'0013'
-        success = r'-123.123E-10'
+        s1 = r'-0.123'
+        e1 = -0.123
+        s2 = r'0.123456789E1'
+        e2 = 1.23456789
+        s3 = r'1231235234234234'
+        e3 = 1231235234234234L
+        s4 = r'-0'
+        e4 = 0
+        self.assertEqual(self.jp.getnumber(s1, 0)[0], e1)
+        self.assertEqual(self.jp.getnumber(s2, 0)[0], e2)
+        self.assertEqual(self.jp.getnumber(s3, 0)[0], e3)
+        self.assertEqual(self.jp.getnumber(s4, 0)[0], e4)
 
 
 if __name__ == '__main__':
