@@ -363,7 +363,12 @@ class JsonParser():
         return unichr(int(string[index:index + 4], 16)), index + 4
 
     def __getitem__(self, item):
-        return self.d[item]
+        return self.dictcontent[item]
 
     def __setitem__(self, key, value):
-        self.d[key] = value
+        self.dictcontent[key] = value
+
+    def update(self, d):
+        d = self.loaddictwithstr(d)
+        for key, value in d.iteritems():
+            self.dictcontent[key] = value
