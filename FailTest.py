@@ -1,7 +1,7 @@
 __author__ = 'gzs3049'
 # coding=utf-8
 from unittest import TestCase
-from SimpleParser import SimpleParser
+from JsonParser import JsonParser
 
 JSONDOCS = [
     # http://json.org/JSON_checker/test/fail2.json
@@ -36,8 +36,6 @@ JSONDOCS = [
     '{"back":["Illegal backslash escape: \\\'"]}',
     # http://json.org/JSON_checker/test/fail17.json
     '{"back":["Illegal backslash escape: \\017"]}',
-    # http://json.org/JSON_checker/test/fail18.json
-    # '[[[[[[[[[[[[[[[[[[[["Too deep"]]]]]]]]]]]]]]]]]]]]',
     # http://json.org/JSON_checker/test/fail19.json
     '{"Missing colon" null}',
     # http://json.org/JSON_checker/test/fail20.json
@@ -57,13 +55,12 @@ JSONDOCS = [
 
 class FailTest(TestCase):
     def setUp(self):
-        self.jp = SimpleParser()
+        self.jp = JsonParser()
 
     def test_fail_example(self):
-        for key, kdict in enumerate(JSONDOCS):
-            print key, kdict
+        for value in JSONDOCS:
             try:
-                self.jp.load(kdict)
+                self.jp.load(value)
             except ValueError as err:
                 print err.message
                 continue

@@ -11,7 +11,8 @@ class SimpleParser:
         """读取json格式数据，输入s为一个json字符串，无返回值"""
         index = 0
         s.strip()
-        print s
+        if not isinstance(s, unicode):
+            s.decode(encoding='utf-8')
         length = len(s)
         while 1:
             if index == length:
@@ -62,8 +63,11 @@ class SimpleParser:
 
     def dumpDict(self):
         """返回一个字典，包含类中数据。所有字符均为unicode"""
-        return self.unidict(self.pDict)
-
+        result = dict()
+        for key, value in enumerate(self.d):
+            result[key] = value
+        return result
+    
     def unidict(self, d):
         ndict = dict()
         for key in d:

@@ -1,133 +1,239 @@
-# coding=utf-8
-import json
+# -*- encoding: utf-8 -*-
 
 
 class JsonParser():
     def __init__(self):
-        self.d = dict()
+        self.dictcontent = dict()
 
     def load(self, s):
+        if not isinstance(s, unicode):
+            s = s.decode('utf8')
         s = s.strip()
-        pass
+        try:
+            if s and s[0] == '{':
+                self.dictcontent, string = self.getobject(s[1:])
+            else:
+                raise ValueError("Invalid json string start without object")
+            if len(string) != 0:
+                raise ValueError("Json string can only have one object")
+        except ValueError as ve:
+            print "Error: {}".format(ve.message)
+        except Exception as ex:
+            print "Exception: {}".format(ex.message)
 
-    def getobject(self, string, index):
+    def dump(self):
+        return self.dumpobject(self.dictcontent)
+
+    def dumpobject(self, obj):
+        objstr = ''
+        isfirst = True
+        for key, value in obj.iteritems():
+            if isfirst:
+                isfirst = False
+            else:
+                objstr += ','
+            objstr += '"' + key + '":'
+            objstr += self.dumpvalue(value)
+        return '{' + objstr + '}'
+
+    def dumplist(self, alist):
+        liststr = ''
+        isfirst = True
+        for value in alist:
+            if isfirst:
+                isfirst = False
+            else:
+                liststr += ','
+            liststr += self.dumpvalue(value)
+        return '[' + liststr + ']'
+
+    def dumpvalue(self, value):
+        valuestr = ''
+        if isinstance(value, dict):
+            valuestr = self.dumpobject(value)
+        elif isinstance(value, list):
+            valuestr = self.dumplist(value)
+        elif isinstance(value, bool):
+            if value:
+                valuestr = 'true'
+            else:
+                valuestr = 'false'
+        elif value is None:
+            valuestr = 'null'
+        elif isinstance(value, unicode):
+            valuestr = u''
+            for char in value:
+                if char == '\\':
+                    valuestr += '\\\\'
+                elif char == '"':
+                    valuestr += '\\\"'
+                elif char == '/':
+                    valuestr += '\\/'
+                elif char == '\b':
+                    valuestr += '\\b'
+                elif char == '\f':
+                    valuestr += '\\f'
+                elif char == '\n':
+                    valuestr += '\\n'
+                elif char == '\r':
+                    valuestr += '\\r'
+                elif char == '\t':
+                    valuestr += '\\t'
+                else:
+                    valuestr += char
+            valuestr = '"' + valuestr + '"'
+        else:
+            valuestr = value
+
+        return unicode(valuestr)
+
+    def dumpDict(self):
+        """返回一个字典，包含类中数据。所有字符均为unicode"""
+        result = dict()
+        for key, value in self.dictcontent.iteritems():
+            result[key] = value
+        return result
+
+    def loadDict(self, d):
+        self.dictcontent = self.loaddictwithstr(d)
+
+    def loaddictwithstr(self, d):
+        result = dict()
+        for key, value in d.iteritems():
+            if isinstance(key, str) or isinstance(key, unicode):
+                if isinstance(value, dict):
+                    value = self.loaddictwithstr(value)
+                    result[key] = value
+        return result
+
+    def loadJson(self, f):
+        content = ""
+        try:
+            with open(f) as openfile:
+                content = openfile.read()
+            self.load(content)
+        except EOFError:
+            print "file {} input failed.".format(f)
+        except IOError:
+            print "file {} no exist.".format(f)
+
+    def dumpJson(self, f):
+        try:
+            with open(f, 'w') as outputfile:
+                outputfile.write(self.dump().encode(encoding='utf8'))
+        except EOFError:
+            print "file {} input failed.".format(f)
+        except IOError:
+            print "file {} no exist.".format(f)
+
+    def getobject(self, string):
+        string = string.lstrip()
         objdict = dict()
         haskey = False
-        key = ""
-        idx = index + 1
-        length = len(string)
-        while 1:
-            if idx == length:
-                raise ValueError("Out of length")
-            elif string[idx] == '"':
-                if not haskey:
-                    key, idx = self.getstring(string, idx)
+        hascolon = False
+        hasvalue = False
+        key = None
+        while len(string) != 0:
+            nextchar = string[0]
+            if not haskey and not hascolon:
+                if nextchar == '}':
+                    if len(objdict) == 0:
+                        return objdict, string[1:]
+                    else:
+                        raise ValueError("Invalid object with empty value")
+                elif nextchar == '"':
+                    key, string = self.getstring(string[1:])
+                    string = string.lstrip()
+                    haskey = True
                 else:
-                    value, idx = self.getstring(string, idx)
+                    raise ValueError("Invalid object with no string key {}".format(string))
+            elif haskey and not hascolon:
+                if string[0] != ':':
+                    raise ValueError("Invalid object without colon")
+                else:
+                    string = string[1:].lstrip()
+                    hascolon = True
+            else:
+                if nextchar == '}':
+                    if haskey and hasvalue:
+                        return objdict, string[1:]
+                    else:
+                        raise ValueError("Invalid object without key or value")
+                elif nextchar == ',':
+                    if not (hasvalue and haskey):
+                        raise ValueError("Object elememnt should contain key and value")
+                    haskey = False
+                    hasvalue = False
+                    hascolon = False
+                    string = string[1:].lstrip()
+                else:
+                    if hasvalue:
+                        raise ValueError("Object cannot have two value with one key {}".format(string))
+                    value, string = self.getvalue(string[0:])
+                    string = string.lstrip()
+                    hasvalue = True
                     objdict[key] = value
-            elif string[idx] == ',':
-                idx += 1
-                haskey = False
-            elif string[idx] == '{':
-                value, idx = self.getobject(string, idx)
-                objdict[key] = value
-            elif string[idx] == '[':
-                value, idx = self.getlist(string, idx)
-                objdict[key] = value
-            elif "0" <= string[idx] <= "9" or string[idx] == '-':
-                value, idx = self.getnumber(string, idx)
-                objdict[key] = value
-            elif string[idx] == '}':
-                return objdict, idx + 1
-            elif string[idx] == ':':
-                haskey = True
-                idx += 1
-                continue
-            else:
-                obj, idx = self.getspecialvalue(string, idx)
-                objdict[key] = obj
-            print string[idx:idx + 20]
-            raise ValueError("Invalid symbol {} in index {}".format(string[idx], idx))
 
-    def getlist(self, string, index):
-        string = string.strip()
+        raise ValueError("String {}".format(string))
+
+    def getlist(self, string):
+        string = string.lstrip()
         objlist = list()
-        hasvalue = False  # 记录逗号分割符出现时是否已有值被载入
-        onetime = True  # 左括号是否出现了一次
-        idx = index + 1
-        length = len(string)
-        while 1:
-            if idx == length:
-                if onetime:
-                    break
-                else:
-                    return objlist, idx
-            elif string[idx] == ' ':
-                idx += 1
-                continue
-            elif string[idx] == ',':
+        hasvalue = False  # 记录逗号前是否有值
+        while len(string) != 0:
+            nextchar = string[0]
+            if nextchar == ']':
+                return objlist, string[1:]
+            elif nextchar == ',':
                 if hasvalue:
-                    idx += 1
+                    hasvalue = False
+                    string = string[1:].lstrip()
                 else:
-                    raise ValueError("Invalid array with empty value before index {}".format(idx))
-            elif string[idx] == '[':
-                value, idx = self.getlist(string, idx + 1)
-                objlist.append(value)
-                hasvalue = True
-            elif string[idx] == '{':
-                value, idx = self.getobject(string, idx + 1)
-                objlist.append(value)
-                hasvalue = True
-            elif string[idx] == '"':
-                value, idx = self.getstring(string, idx + 1)
-                objlist.append(value)
-                hasvalue = True
-            elif "0" <= string[idx] <= "9" or string[idx] == "-":
-                value, idx = self.getnumber(string, idx)
-                objlist.append(value)
-                hasvalue = True
-            elif string[idx] == ']':
-                if onetime:
-                    return objlist, idx + 1
-                else:
-                    raise ValueError("Invalid list end in index {}".format(idx))
+                    raise ValueError("Invalid comma in list")
             else:
-                value, idx = self.getspecialvalue(string, idx)
-                objlist.append(value)
+                value, string = self.getvalue(string)
                 hasvalue = True
-        raise ValueError("Invalid list with no close ]")
+                objlist.append(value)
+                string = string.lstrip()
 
-    def getspecialvalue(self, string, index):
-        length = len(string)
-        idx = index
-        if string[idx] == 't':
-            if idx + 4 < length and string[idx:idx + 4] == 'true':
-                obj = True
-                return obj, idx + 4
+        raise ValueError("Invalid list with no close symbol")
+
+    def getvalue(self, string):
+        string = string.lstrip()
+        if len(string) == 0:
+            raise ValueError("Invalid value with empty content")
+        if string[0] == '[':
+            return self.getlist(string[1:])
+        elif string[0] == '{':
+            return self.getobject(string[1:])
+        elif string[0] == '"':
+            return self.getstring(string[1:])
+        elif "0" <= string[0] <= "9" or string[0] == '-':
+            return self.getnumber(string[0:])
+        elif string[0] == 't':
+            if len(string) >= 4 and string[:4] == 'true':
+                return True, string[4:]
             else:
-                raise ValueError("Invalid Symbol:{}".format(string[idx]))
-        elif string[idx] == 'f':
-            if idx + 5 < length and string[idx:idx + 5] == 'false':
-                obj = False
-                return obj, idx + 5
+                raise ValueError("Invalid string start with t")
+        elif string[0] == 'f':
+            if len(string) >= 5 and string[:5] == 'false':
+                return False, string[5:]
             else:
-                raise ValueError("Invalid Symbol:{}".format(string[idx:idx + 5]))
-        elif string[idx] == 'n':
-            if idx + 4 < length and string[idx:idx + 4] == 'null':
-                obj = None
-                return obj, idx + 4
+                raise ValueError("Invalid string start with f")
+        elif string[0] == 'n':
+            if len(string) >= 4 and string[:4] == 'null':
+                return None, string[4:]
             else:
-                raise ValueError("Invalid Symbol:{}".format(string[idx:idx + 4]))
+                raise ValueError("Invalid string start with n")
         else:
-            raise ValueError("Invalid Symbol:{}".format(string[idx]))
+            raise ValueError("Invalid Symbol:{}".format(string[0]))
 
-
-    def getnumber(self, string, index):
+    def getnumber(self, string):
         iszerofirst = False
         hasdot = False
         haspower = False
         length = len(string)
-        idx = index
+        idx = 0
         # 先检查是否含有前导0和负号
         if string[idx] == '0':
             iszerofirst = True
@@ -150,7 +256,7 @@ class JsonParser():
         if iszerofirst:
             if idx == length or string[idx] == ']' or string[idx] == '}' \
                     or string[idx] == ',' or string[idx] == ' ':
-                return 0, idx
+                return 0, string[idx:]
             elif string[idx] != '.' and string[idx] != 'e' and string[idx] != 'E':  # 前导0后面跟的如果不是.，E，e中的其中一个则不合法
                 raise ValueError("Invalid number with leading zero {}".format(string[idx]))
             else:
@@ -158,9 +264,9 @@ class JsonParser():
         while 1:
             if idx == length or string[idx] == ']' or string[idx] == '}' or string[idx] == ',':
                 if hasdot or haspower:
-                    return float(string[index:idx]), idx
+                    return float(string[:idx]), string[idx:]
                 else:
-                    return int(string[index:idx]), idx
+                    return int(string[:idx]), string[idx:]
             elif string[idx] == '.':
                 if hasdot:
                     raise ValueError("Invalid number with double dot")
@@ -174,7 +280,8 @@ class JsonParser():
                 else:
                     haspower = True
                     idx += 1
-                    if self.__checkisend(string, idx):
+                    if idx == length or string[idx] == '}' \
+                            or string[idx] == ']' or string[idx] == ',':
                         raise ValueError("Invalid number with symbol {} in index {}".format(string[idx - 1], idx))
                     else:
                         continue
@@ -183,72 +290,64 @@ class JsonParser():
                     raise ValueError("Number has invalid symbol {} in index {}".format(string[idx], idx))
                 else:
                     idx += 1
-                    if self.__checkisend(string, idx):  # 单独的E-或者E+也是不合法的
+                    if idx == length or string[idx] == '}' or string[idx] == ']' or \
+                                    string[idx] == ',':  # 单独的E-或者E+也是不合法的
                         raise ValueError("Invalid number with symbol {} in index {}".format(string[idx - 1], idx))
                     continue
             elif '0' <= string[idx] <= '9':
                 idx += 1
                 continue
+            elif string[idx] == '\n' or string[idx] == ' ' or string[idx] == '\t':  # 忽略空格和换行符号
+                idx += 1
+                continue
             else:
                 raise ValueError("Number has invalid symbol {} in index {}".format(string[idx], idx))
 
-
-    def __checkisend(self, string, idx):
-        length = len(string)
-        if idx == length or string[idx] == '}' or string[idx] == ']' or string[idx] == ',':
-            return True
-        else:
-            return False
-
-
-    def getstring(self, string, index):
+    def getstring(self, string):
         """Get string 传入时默认是以双引号开头的"""
-        idx = index + 1
+        idx = 0
         nstring = ""
         length = len(string)
-        hassinglequote = True
-        while 1:
-            if idx == length:
-                if hassinglequote:
-                    break
-                else:
-                    return nstring, idx + 1  # JSON允许空字符串
-            elif string[idx] == '\\':
+        while idx < length:
+            if string[idx] == '\\':
                 idx += 1
                 if idx == length:
                     break
                 elif string[idx] == 'u':  # Get unicode char
                     curchar, idx = self.getchar(string, idx + 1)
-                    nstring += '\\u' + curchar
+                    nstring += curchar
                 elif string[idx] == '"':
-                    nstring += '\\\"'
+                    nstring += '"'
                     idx += 1
                 elif string[idx] == '\\':
-                    nstring += '\\\\'
+                    nstring += '\\'
                     idx += 1
-                elif string[idx] == '/' or string[idx] == 'b' \
-                        or string[idx] == 'f' or string[idx] == 'n' \
-                        or string[idx] == 'r' or string[idx] == 't':  # Get control symbol
-                    nstring += '\\' + string[idx]
+                elif string[idx] == '/':
+                    nstring += '/'
+                    idx += 1
+                elif string[idx] == 'b':
+                    nstring += '\b'
+                elif string[idx] == 'f':
+                    nstring += '\f'
+                    idx += 1
+                elif string[idx] == 'n':
+                    nstring += '\n'
+                    idx += 1
+                elif string[idx] == 'r':
+                    nstring += '\r'
+                    idx += 1
+                elif string[idx] == 't':
+                    nstring += '\t'
                     idx += 1
                 else:
-                    raise ValueError("Invalid escapse")  # Invalid escapse
+                    raise ValueError("Invalid escapse")
             elif string[idx] == '"':
-                if hassinglequote:  # 再遇到一个双引号则返回
-                    return nstring, idx + 1  # 返回取出字符串之后的下标
-                else:
-                    hassinglequote = True
-                    idx += 1
+                # print nstring, unicode(nstring)
+                return unicode(nstring), string[idx + 1:]
             else:
-                if hassinglequote:  # 之前出现了一个引号则添加字符
-                    nstring += string[idx]
-                    idx += 1
-                elif string[idx] == ' ':
-                    idx += 1
-                else:
-                    raise ValueError("Invalid string does not start with double quotes")
+                nstring += string[idx]
+                idx += 1
         raise ValueError("Invalid string with no close \"")
-
 
     def getchar(self, string, index):
         """Get unicode char"""
@@ -263,4 +362,10 @@ class JsonParser():
                 continue
             else:
                 raise ValueError("Invalid unicode char {}".format(curchar))
-        return string[index:index + 4], index + 4
+        return unichr(int(string[index:index + 4], 16)), index + 4
+
+    def __getitem__(self, item):
+        return self.d[item]
+
+    def __setitem__(self, key, value):
+        self.d[key] = value

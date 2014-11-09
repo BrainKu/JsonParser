@@ -1,0 +1,32 @@
+{
+    "employees": [
+        {
+            "firstName": "ac]}",
+            "lastName": "Doe",
+			"temp": "\t",
+            "ÖÐÎÄ":123,
+			"escape": "\"\\\b\f\n\r\t\u5411",
+			"empyt":[{},[[[[]]]]],
+			"object": {"hello":"world"}
+        },
+        {
+            "firstName": "Marry\u5411",
+            "lastName": "Smi\u1234th",
+			"data": ["Anna",{"hello":"world"}, "sef", false, true, null, -18, 18.1, 1e10, 1.3e-2, 1.4e+3]
+        },
+        { 
+            "firstName": "Peter",
+            "lastName": "Jones"
+        }
+    ],
+	"student": [
+		{
+			"name": "fanjie",
+			"score": 18
+		},
+		{
+			"name": "lyn",
+			"score": 20.18
+		}
+	]
+}
