@@ -1,5 +1,6 @@
 __author__ = 'gzs3049'
 # coding=utf-8
+
 from unittest import TestCase
 from JsonParser import JsonParser
 
@@ -47,9 +48,7 @@ JSONDOCS = [
     # http://json.org/JSON_checker/test/fail23.json
     '{"back":["Bad value", truth]}',
     # http://json.org/JSON_checker/test/fail24.json
-    "{\"back\":['single quote']}",
-    # http://code.google.com/p/simplejson/issues/detail?id=3
-    u'["A\u001FZ control characters in string"]',
+    "{\"back\":['single quote']}"
 ]
 
 
@@ -65,6 +64,6 @@ class FailTest(TestCase):
                 print err.message
                 continue
             else:
-                self.fail("ValueError has no been raise when try {}".format(kdict))
+                self.fail("ValueError has no been raise when try {}".format(value))
 
 

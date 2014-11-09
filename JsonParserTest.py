@@ -56,7 +56,7 @@ class MyTestCase(unittest.TestCase):
         print self.jp.d
 
     def test_loadjson(self):
-        self.jp.loadJson("StudentInfo.json")
+        self.jp.loadJson("JSON.txt")
         print self.jp.dump()
 
     def test_getchar(self):
@@ -76,7 +76,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_getfile(self):
         content = ""
-        with open("StudentInfo.json") as f:
+        with open("JSON.txt") as f:
             for line in f:
                 content += line
         self.jp.load(content)

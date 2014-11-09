@@ -9,17 +9,12 @@ class JsonParser():
         if not isinstance(s, unicode):
             s = s.decode('utf8')
         s = s.strip()
-        try:
-            if s and s[0] == '{':
-                self.dictcontent, string = self.getobject(s[1:])
-            else:
-                raise ValueError("Invalid json string start without object")
-            if len(string) != 0:
-                raise ValueError("Json string can only have one object")
-        except ValueError as ve:
-            print "Error: {}".format(ve.message)
-        except Exception as ex:
-            print "Exception: {}".format(ex.message)
+        if s and s[0] == '{':
+            self.dictcontent, string = self.getobject(s[1:])
+        else:
+            raise ValueError("Invalid json string start without object")
+        if len(string) != 0:
+            raise ValueError("Json string can only have one object")
 
     def dump(self):
         return self.dumpobject(self.dictcontent)
@@ -183,7 +178,10 @@ class JsonParser():
         while len(string) != 0:
             nextchar = string[0]
             if nextchar == ']':
-                return objlist, string[1:]
+                if hasvalue and len(objlist) == 0:
+                    return objlist, string[1:]
+                else:
+                    raise ValueError("Invalid list with empty value")
             elif nextchar == ',':
                 if hasvalue:
                     hasvalue = False
