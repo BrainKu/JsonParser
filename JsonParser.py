@@ -132,7 +132,7 @@ class JsonParser():
             print "file {} no exist.".format(f)
 
     def getobject(self, string):
-        """从已去除了“开头的字符串中获取dict并返回"""
+        """从已去除了{开头的字符串中获取dict并返回"""
         string = string.lstrip()
         objdict = dict()
         haskey = False
@@ -141,7 +141,7 @@ class JsonParser():
         key = None
         while len(string) != 0:
             nextchar = string[0]
-            if not haskey and not hascolon:
+            if not haskey and not hascolon:  # 如果没有值和冒号，则先试着获取一个字符串作为key或返回一个空字典
                 if nextchar == '}':
                     if len(objdict) == 0:
                         return objdict, string[1:]
@@ -240,7 +240,10 @@ class JsonParser():
             raise ValueError("Invalid Symbol:{}".format(string[0]))
 
     def getnumber(self, string):
-        """获取字符串中的数字"""
+        """
+        获取字符串中的数字，返回截取了数字之后的内容
+        先判断是否含有前导0，如果含有前导0则特殊处理，处理之后再按照正常的逻辑进行判断
+        """
         iszerofirst = False
         hasdot = False
         haspower = False
@@ -316,7 +319,7 @@ class JsonParser():
                 raise ValueError("Number has invalid symbol {} in index {}".format(string[idx], idx))
 
     def getstring(self, string):
-        """Get string 传入时默认是以双引号开头的"""
+        """获取string，返回截取了string剩下的内容"""
         idx = 0
         nstring = ""
         length = len(string)
@@ -362,7 +365,7 @@ class JsonParser():
         raise ValueError("Invalid string with no close \"")
 
     def getchar(self, string, index):
-        """Get unicode char"""
+        """获取unicode字符"""
         length = len(string)
         if index + 3 >= length:
             raise ValueError("Invalid unicode string {}".format(string[index:length]))
@@ -383,6 +386,7 @@ class JsonParser():
         self.dictcontent[key] = value
 
     def update(self, d):
+        """用字典d更新类中的数据"""
         d = self.loaddictwithstr(d)
         for key, value in d.iteritems():
             self.dictcontent[key] = value

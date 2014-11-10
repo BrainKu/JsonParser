@@ -2,8 +2,9 @@
 __author__ = '郑鑫伟'
 
 from JsonParser import JsonParser
-import unittest
 import json
+import unittest
+import copy
 
 # from http://json.org/JSON_checker/test/pass1.json and add chinese symbol
 JSON = r'''
@@ -74,7 +75,7 @@ class JsonParserTest(unittest.TestCase):
         self.maxDiff = None
 
     def test_main(self):
-        file_path = "output.txt"
+        file_path = "output1.json"
         a1 = JsonParser()
         a2 = JsonParser()
         a3 = JsonParser()
@@ -98,7 +99,7 @@ class JsonParserTest(unittest.TestCase):
                  r'''{"abc":{"abc":{"abc":[123,234,567,null,false,true,[]]}}}''']
         for s in slist:
             self.jp.load(s)
-            self.assertEqual(0, cmp(self.jp.dictcontent, json.loads(s)))
+            self.assertEqual(self.jp.dictcontent, json.loads(s))
 
     def test_dump(self):
         slist = [r'''{}''',
@@ -113,21 +114,30 @@ class JsonParserTest(unittest.TestCase):
         self.jp.loadJson("JSON.txt")
         with open("JSON.txt") as f:
             content = f.read()
-        self.assertEqual(0, cmp(self.jp.dictcontent, json.loads(content)))
+        self.assertEqual(self.jp.dictcontent, json.loads(content))  # 比较使用标准库和JsonParser加载相同字符串结果是否相同
 
     def test_dumpJson(self):
-        with open("Test1.json", "w") as outputfile:
-            json.dump(json.loads(JSON), outputfile)
-        self.jp.dumpJson("test.txt")
+        output = "output2.json"
+        self.jp.load(JSON)
+        self.jp.dumpJson(output)
+        first = copy.deepcopy(self.jp.dictcontent)  # 创建一个原字典的拷贝
+        with open(output) as f:
+            content = f.read()
+        self.jp.load(content)
+        self.assertEqual(first, self.jp.dictcontent)
 
     def test_loadDict(self):
         d1 = {"abc": 123, 123: "abc", False: "test", None: 123}
         e1 = {"abc": 123}
         self.jp.loadDict(d1)
-        self.assertEqual(0, cmp(e1, self.jp.dictcontent))
+        self.assertEqual(e1, self.jp.dictcontent)
 
     def test_dumpDict(self):
-        pass
+        d1 = r'''{"abc": 123, "bcd": false, "cde": null}'''
+        self.jp.load(d1)
+        # dumpDict返回的字典跟原字典具有相同的键值，但是不是同一个对象
+        self.assertEqual(self.jp.dictcontent, self.jp.dumpDict())
+        self.assertFalse(self.jp.dictcontent is self.jp.dumpDict())
 
     def test_getitem(self):
         d = {"abc": "cde", "cde": "abc"}
@@ -151,13 +161,6 @@ class JsonParserTest(unittest.TestCase):
         self.jp.update(d1)
         self.assertEqual("abc", self.jp["abc"])
         self.assertEqual("cde", self.jp["cde"])
-
-    # def test_control(self):
-    # global JSON
-    # self.jp.load(JSON)
-    # self.jp.dumpJson("test_json.txt")
-    # self.jp.loadJson("test_json.txt")
-    # print self.jp.dictcontent
 
     def test_getnumber(self):
         s1 = r'-0.123'
