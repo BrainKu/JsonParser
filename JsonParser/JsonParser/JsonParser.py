@@ -93,8 +93,23 @@ class JsonParser():
         """返回一个字典，包含类中数据。所有字符均为unicode"""
         result = dict()
         for key, value in self.dictcontent.iteritems():
-            result[key] = value
+            result[key] = self.deepdump(value)
         return result
+
+    def deepdump(self, value):
+        """深拷贝对象"""
+        if isinstance(value, list):
+            l = list()
+            for v in value:
+                l.append(self.deepdump(v))
+            return l
+        elif isinstance(value, dict):
+            for k, v in value.iteritems():
+                d = dict()
+                d[k] = self.deepdump(v)
+                return d
+        else:
+            return value
 
     def loadDict(self, d):
         """读取dict中的数据，存入类中，若遇到不是字符串的key则忽略"""
