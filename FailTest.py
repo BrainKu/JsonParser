@@ -1,7 +1,7 @@
 __author__ = 'gzs3049'
 # coding=utf-8
 
-from unittest import TestCase
+import unittest
 from JsonParser import JsonParser
 
 JSONDOCS = [
@@ -52,18 +52,21 @@ JSONDOCS = [
 ]
 
 
-class FailTest(TestCase):
+class FailTest(unittest.TestCase):
     def setUp(self):
         self.jp = JsonParser()
 
     def test_fail_example(self):
-        for value in JSONDOCS:
+        for key, value in enumerate(JSONDOCS):
             try:
                 self.jp.load(value)
             except ValueError as err:
-                print err.message
+                print "Testcase {}: content raise exception: {}".format(key + 1, err.message)
                 continue
             else:
                 self.fail("ValueError has no been raise when try {}".format(value))
+        print "FailTest has finished!"
 
+if __name__ == '__main__':
+    unittest.main()
 

@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+# @author gzs3049
 
 
 class JsonParser():
@@ -6,6 +7,7 @@ class JsonParser():
         self.dictcontent = dict()
 
     def load(self, s):
+        """读取json格式数据，输入s为一个json字符串，无返回值"""
         if not isinstance(s, unicode):
             s = s.decode('utf8')
         s = s.strip()
@@ -17,9 +19,14 @@ class JsonParser():
             raise ValueError("Json string can only have one object")
 
     def dump(self):
-        return self.dumpobject(self.dictcontent)
+        """根据类中数据返回json字符串"""
+        string = self.dumpobject(self.dictcontent)
+        string = string.replace('\\x08', '\\b').replace('\\x0c', '\\f')
+        print "\nstring: ", string
+        return string
 
     def dumpobject(self, obj):
+        """将dict的内容转换为json字符串后返回"""
         objstr = ''
         isfirst = True
         for key, value in obj.iteritems():
@@ -27,11 +34,13 @@ class JsonParser():
                 isfirst = False
             else:
                 objstr += ','
+            key = key.encode('unicode_escape')
             objstr += '"' + key + '":'
             objstr += self.dumpvalue(value)
         return '{' + objstr + '}'
 
     def dumplist(self, alist):
+        """将list的内容转换为json字符串后返回"""
         liststr = ''
         isfirst = True
         for value in alist:
@@ -43,6 +52,7 @@ class JsonParser():
         return '[' + liststr + ']'
 
     def dumpvalue(self, value):
+        """将value转换为json字符串后返回"""
         valuestr = ''
         if isinstance(value, dict):
             valuestr = self.dumpobject(value)
@@ -58,24 +68,21 @@ class JsonParser():
         elif isinstance(value, unicode) or isinstance(value, str):
             valuestr = u''
             for char in value:
-                if char == '\\':
-                    valuestr += '\\\\'
-                elif char == '"':
-                    valuestr += r'\"'
-                # elif char == '/':
-                # valuestr += '\\/'
+                if char == '\"':
+                    valuestr += '\\\"'
                 elif char == '\b':
                     valuestr += r'\b'
                 elif char == '\f':
-                    valuestr += r'\f'
+                    valuestr += 'f'
                 elif char == '\n':
-                    valuestr += r'\n'
+                    valuestr += 'n'
                 elif char == '\r':
                     valuestr += r'\r'
                 elif char == '\t':
                     valuestr += r'\t'
                 else:
                     valuestr += char
+            valuestr = valuestr.encode('unicode_escape')
             valuestr = '"' + valuestr + '"'
         else:
             valuestr = value
@@ -90,22 +97,25 @@ class JsonParser():
         return result
 
     def loadDict(self, d):
+        """读取dict中的数据，存入类中，若遇到不是字符串的key则忽略"""
         self.dictcontent = self.loaddictwithstr(d)
 
     def loaddictwithstr(self, d):
+        """读取字典中的数据，返回一个当前字典的拷贝，若遇到不是字符串的key则忽略"""
         result = dict()
         for key, value in d.iteritems():
             if isinstance(key, str) or isinstance(key, unicode):
                 if isinstance(value, dict):
                     value = self.loaddictwithstr(value)
-                    result[key] = value
+                result[key] = value
         return result
 
     def loadJson(self, f):
-        content = ""
+        """从文件中读入json格式数据，f为文件路径，遇到文件读写失败则输出错误提示"""
         try:
             with open(f) as openfile:
                 content = openfile.read()
+            print "content", content
             self.load(content)
         except EOFError:
             print "file {} input failed.".format(f)
@@ -113,6 +123,7 @@ class JsonParser():
             print "file {} no exist.".format(f)
 
     def dumpJson(self, f):
+        """将类中的内容以json格式存入文件，文件若存在则覆盖，文件操作失败抛出异常"""
         try:
             with open(f, 'w') as outputfile:
                 outputfile.write(self.dump().encode(encoding='utf8'))
@@ -122,6 +133,7 @@ class JsonParser():
             print "file {} no exist.".format(f)
 
     def getobject(self, string):
+        """从已去除了“开头的字符串中获取dict并返回"""
         string = string.lstrip()
         objdict = dict()
         haskey = False
@@ -144,8 +156,7 @@ class JsonParser():
                     raise ValueError("Invalid object with no string key {}".format(string))
             elif haskey and not hascolon:
                 if string[0] != ':':
-                    print objdict
-                    raise ValueError("Invalid object without colon")
+                    raise ValueError("Invalid object without colon {}".format(string[:10]))
                 else:
                     string = string[1:].lstrip()
                     hascolon = True
@@ -172,17 +183,17 @@ class JsonParser():
 
         raise ValueError("String {}".format(string))
 
-    def getlist(self, string):
+    def getarray(self, string):
+        """从已去除了[开头的字符串中获取list"""
         string = string.lstrip()
         objlist = list()
         hasvalue = False  # 记录逗号前是否有值
         while len(string) != 0:
             nextchar = string[0]
             if nextchar == ']':
-                if hasvalue or len(objlist) == 0 or len(objlist) == 1:
+                if hasvalue or len(objlist) == 0:  # 如果右括号前有value或数组为空则返回
                     return objlist, string[1:]
                 else:
-                    print objlist
                     raise ValueError("Invalid list with empty value")
             elif nextchar == ',':
                 if hasvalue:
@@ -199,11 +210,12 @@ class JsonParser():
         raise ValueError("Invalid list with no close symbol")
 
     def getvalue(self, string):
+        """获取json标准中对应的value"""
         string = string.lstrip()
         if len(string) == 0:
             raise ValueError("Invalid value with empty content")
         if string[0] == '[':
-            return self.getlist(string[1:])
+            return self.getarray(string[1:])
         elif string[0] == '{':
             return self.getobject(string[1:])
         elif string[0] == '"':
@@ -229,6 +241,7 @@ class JsonParser():
             raise ValueError("Invalid Symbol:{}".format(string[0]))
 
     def getnumber(self, string):
+        """获取字符串中的数字"""
         iszerofirst = False
         hasdot = False
         haspower = False
@@ -290,8 +303,8 @@ class JsonParser():
                     raise ValueError("Number has invalid symbol {} in index {}".format(string[idx], idx))
                 else:
                     idx += 1
-                    if idx == length or string[idx] == '}' or string[idx] == ']' or \
-                                    string[idx] == ',':  # 单独的E-或者E+也是不合法的
+                    if idx == length or string[idx] == '}' or string[idx] == ']' \
+                            or string[idx] == ',':  # 单独的E-或者E+也是不合法的
                         raise ValueError("Invalid number with symbol {} in index {}".format(string[idx - 1], idx))
                     continue
             elif '0' <= string[idx] <= '9':
@@ -317,7 +330,7 @@ class JsonParser():
                     curchar, idx = self.getchar(string, idx + 1)
                     nstring += curchar
                 elif string[idx] == '"':
-                    nstring += '"'
+                    nstring += '\"'
                     idx += 1
                 elif string[idx] == '\\':
                     nstring += '\\'
@@ -341,9 +354,8 @@ class JsonParser():
                     nstring += '\t'
                     idx += 1
                 else:
-                    raise ValueError("Invalid escapse")
+                    raise ValueError("Invalid escapse: {}".format(string[idx]))
             elif string[idx] == '"':
-                # print nstring, unicode(nstring)
                 return unicode(nstring), string[idx + 1:]
             else:
                 nstring += string[idx]
