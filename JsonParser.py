@@ -55,25 +55,25 @@ class JsonParser():
                 valuestr = 'false'
         elif value is None:
             valuestr = 'null'
-        elif isinstance(value, unicode):
+        elif isinstance(value, unicode) or isinstance(value, str):
             valuestr = u''
             for char in value:
                 if char == '\\':
                     valuestr += '\\\\'
                 elif char == '"':
-                    valuestr += '\\\"'
-                elif char == '/':
-                    valuestr += '\\/'
+                    valuestr += r'\"'
+                # elif char == '/':
+                # valuestr += '\\/'
                 elif char == '\b':
-                    valuestr += '\\b'
+                    valuestr += r'\b'
                 elif char == '\f':
-                    valuestr += '\\f'
+                    valuestr += r'\f'
                 elif char == '\n':
-                    valuestr += '\\n'
+                    valuestr += r'\n'
                 elif char == '\r':
-                    valuestr += '\\r'
+                    valuestr += r'\r'
                 elif char == '\t':
-                    valuestr += '\\t'
+                    valuestr += r'\t'
                 else:
                     valuestr += char
             valuestr = '"' + valuestr + '"'
@@ -144,6 +144,7 @@ class JsonParser():
                     raise ValueError("Invalid object with no string key {}".format(string))
             elif haskey and not hascolon:
                 if string[0] != ':':
+                    print objdict
                     raise ValueError("Invalid object without colon")
                 else:
                     string = string[1:].lstrip()
@@ -178,9 +179,10 @@ class JsonParser():
         while len(string) != 0:
             nextchar = string[0]
             if nextchar == ']':
-                if hasvalue and len(objlist) == 0:
+                if hasvalue or len(objlist) == 0 or len(objlist) == 1:
                     return objlist, string[1:]
                 else:
+                    print objlist
                     raise ValueError("Invalid list with empty value")
             elif nextchar == ',':
                 if hasvalue:
@@ -325,6 +327,7 @@ class JsonParser():
                     idx += 1
                 elif string[idx] == 'b':
                     nstring += '\b'
+                    idx += 1
                 elif string[idx] == 'f':
                     nstring += '\f'
                     idx += 1

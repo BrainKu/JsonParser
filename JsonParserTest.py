@@ -1,8 +1,9 @@
 __author__ = 'gzs3049'
 # coding=utf-8
 
-import unittest
 from JsonParser import JsonParser
+import unittest
+import json
 
 
 class MyTestCase(unittest.TestCase):
@@ -10,54 +11,42 @@ class MyTestCase(unittest.TestCase):
         self.jp = JsonParser()
 
     def test_getlist(self):
-        liststr = r'''[{"integer": 1234567890,
+        liststr = r'''{"key":[{"integer": 1234567890,
         "real": -9876.543210,
         "e": 0.123456789e-12,
         "E": 1.234567890E+34,
-        "":  23456789012E666,
+        "":  23456789012E6,
         "zero": 0,
         "one": 1,
         "space": " ",
         "quote": "\"",
         "backslash": "\\",
         "unicode":"\uedda",
-        "controls": "\b\f\n\r\t"}]'''
-
-        s1 = r'''["space", " ","quote"]'''
-        # print json.loads(liststr)
-        print self.jp.getlist(s1[1:])
-        # print self.jp.getlist(s1, 1)
-        # print json.dumps(data)
-
-    def test_getlist0(self):
-        liststr = r'''[{
-        "quote": "\"",
-        "backslash": "\\",
-        "unicode":"\uedda",
-        "controls": "\b\f\n\r\t"}]'''
-        l = r'''["abcd",123,null,false,true,{"abc":123},[123,56,99,10000, null,false   ]]'''
-        # print self.jp.getlist(liststr[1:])
-        self.jp.load(JSON)
-        self.jp.load(self.jp.dump())
-        self.jp.load(self.jp.dump())
-        print self.jp.dictcontent
+        "controls": "\b\f\n\r\t"}]}'''
+        self.jp.load(liststr)
+        expected = json.loads(liststr)
+        self.assertEqual(0, cmp(expected, self.jp.dictcontent))
 
     def test_getobject(self):
         obj = r'''{"abc":123,"cde":{"abc":
-                {"abc":false,"abd":""}}}'''
-        objfile = r'''{"china":"\u7f51\n\u6613","array":[6,"wyl",true],"null":null}'''
-        # print JSON[1:2]
-        # print self.jp.getobject(JSON[2:])
-        # print self.jp.load(objfile)
-        self.jp.load(JSON)
-        import json
-        # print json.loads(objfile)
-        # self.jp.load(objfile)
-        print self.jp.d
+                {"abc":false,"abd":"","china":"\u7f51\n\u6613"}}}'''
+        self.jp.load(obj)
+        print self.jp.dump()
+        expected = json.loads(obj)
+        self.assertEqual(0, cmp(expected, self.jp.dictcontent))
 
     def test_loadjson(self):
         self.jp.loadJson("JSON.txt")
-        print self.jp.dump()
+        with open("JSON.txt") as f:
+            content = f.read()
+        self.assertEqual(0, cmp(self.jp.dictcontent, json.loads(content)))
+        self.jp.dumpJson("content.txt")
+        with open("content.txt") as f:
+            content = f.read()
+        print content[580:600]
+        self.jp.loadJson("content.txt")
+        print self.jp.dictcontent
+        print json.loads(content)
 
     def test_getchar(self):
         c = r'\ude1c'
@@ -83,12 +72,21 @@ class MyTestCase(unittest.TestCase):
         print self.jp.dump()
 
     def test_dumpfile(self):
-        self.jp.loadJson("JSON.txt")
+        # self.jp.loadJson("JSON.txt")
+        self.jp.loadJson("Test.json")
+        with open("Test1.json", "w") as outputfile:
+            json.dump(json.loads(JSON), outputfile)
         self.jp.dumpJson("test.txt")
 
     def test_dumpDict(self):
         self.jp.loadJson("JSON.txt")
         print self.jp.dumpDict()
+
+    def test_control(self):
+        self.jp.load(JSON)
+        self.jp.dumpJson("test_json.txt")
+        self.jp.loadJson("test_json.txt")
+        print self.jp.dictcontent
 
     def test_getnumber(self):
         s1 = r'-0.123'
