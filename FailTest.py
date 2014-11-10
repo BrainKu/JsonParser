@@ -1,5 +1,5 @@
-__author__ = 'gzs3049'
 # coding=utf-8
+__author__ = '郑鑫伟'
 
 import unittest
 from JsonParser import JsonParser

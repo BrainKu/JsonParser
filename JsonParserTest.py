@@ -1,10 +1,11 @@
-__author__ = 'gzs3049'
 # coding=utf-8
+__author__ = '郑鑫伟'
 
 from JsonParser import JsonParser
 import unittest
 import json
 
+# from http://json.org/JSON_checker/test/pass1.json and add chinese symbol
 JSON = r'''
 {"key":[
     "JSON Test Pattern pass1",
@@ -21,6 +22,7 @@ JSON = r'''
         "e": 0.123456789e-12,
         "E": 1.234567890E+34,
         "":  23456789012E6,
+        "中文":"字符串",
         "zero": 0,
         "one": 1,
         "space": " ",
@@ -79,28 +81,33 @@ class JsonParserTest(unittest.TestCase):
 
         # test_json_str、test_dict
         a1.load(JSON)
-        import json
-
-        print "dumpjson", json.loads(JSON)
         d1 = a1.dumpDict()
-        print "dumpdict", d1
-        print "jsondump",json.dumps(json.loads(JSON))
         # 粗糙比较test_dict和d1
 
         a2.loadDict(d1)
-        # print "dumpa222", a2.dump()
         a2.dumpJson(file_path)
         a3.loadJson(file_path)
-        print a3.dictcontent
         d3 = a3.dumpDict()
-        print d3
-        # self.assertEqual(d1, d3)
+        # 比较d1和d3是否完全一样
+        self.assertEqual(d1, d3)
 
     def test_load(self):
-        pass
+        slist = [r'''{}''',
+                 r'''{"abc":123}''',
+                 r'''{"abc":{"abc":{"abc":123}}}''',
+                 r'''{"abc":{"abc":{"abc":[123,234,567,null,false,true,[]]}}}''']
+        for s in slist:
+            self.jp.load(s)
+            self.assertEqual(0, cmp(self.jp.dictcontent, json.loads(s)))
 
     def test_dump(self):
-        pass
+        slist = [r'''{}''',
+                 r'''{"abc":123}''',
+                 r'''{"abc":{"abc":{"abc":123}}}''',
+                 r'''{"abc":{"abc":{"abc":[123,234,567,null,false,true,[]]}}}''']
+        for s in slist:
+            self.jp.load(s)
+            self.assertEqual(self.jp.dump(), s)
 
     def test_loadJson(self):
         self.jp.loadJson("JSON.txt")
@@ -150,7 +157,7 @@ class JsonParserTest(unittest.TestCase):
     # self.jp.load(JSON)
     # self.jp.dumpJson("test_json.txt")
     # self.jp.loadJson("test_json.txt")
-    #     print self.jp.dictcontent
+    # print self.jp.dictcontent
 
     def test_getnumber(self):
         s1 = r'-0.123'

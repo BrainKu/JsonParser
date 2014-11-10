@@ -1,5 +1,5 @@
-# -*- encoding: utf-8 -*-
-# @author gzs3049
+# coding=utf-8
+__author__ = '郑鑫伟'
 
 
 class JsonParser():
@@ -22,7 +22,6 @@ class JsonParser():
         """根据类中数据返回json字符串"""
         string = self.dumpobject(self.dictcontent)
         string = string.replace('\\x08', '\\b').replace('\\x0c', '\\f')
-        print "\nstring: ", string
         return string
 
     def dumpobject(self, obj):
@@ -34,8 +33,7 @@ class JsonParser():
                 isfirst = False
             else:
                 objstr += ','
-            key = key.encode('unicode_escape')
-            objstr += '"' + key + '":'
+            objstr += self.dumpvalue(key) + ':'
             objstr += self.dumpvalue(value)
         return '{' + objstr + '}'
 
@@ -67,8 +65,11 @@ class JsonParser():
             valuestr = 'null'
         elif isinstance(value, unicode) or isinstance(value, str):
             valuestr = u''
+            value = value.encode('unicode_escape')
             for char in value:
-                if char == '\"':
+                if char == '\\':
+                    valuestr += '\\'
+                elif char == '\"':
                     valuestr += '\\\"'
                 elif char == '\b':
                     valuestr += r'\b'
@@ -82,7 +83,6 @@ class JsonParser():
                     valuestr += r'\t'
                 else:
                     valuestr += char
-            valuestr = valuestr.encode('unicode_escape')
             valuestr = '"' + valuestr + '"'
         else:
             valuestr = value
@@ -115,7 +115,6 @@ class JsonParser():
         try:
             with open(f) as openfile:
                 content = openfile.read()
-            print "content", content
             self.load(content)
         except EOFError:
             print "file {} input failed.".format(f)
@@ -156,7 +155,7 @@ class JsonParser():
                     raise ValueError("Invalid object with no string key {}".format(string))
             elif haskey and not hascolon:
                 if string[0] != ':':
-                    raise ValueError("Invalid object without colon {}".format(string[:10]))
+                    raise ValueError("Invalid object without colon {}".format(string[:]))
                 else:
                     string = string[1:].lstrip()
                     hascolon = True
