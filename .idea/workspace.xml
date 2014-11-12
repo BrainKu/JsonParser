@@ -5,28 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/FailTest.py" line="63" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70394fa9-c2dc-4dab-9ee4-e83c1fe61821" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/FailTest.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/JSON.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/JsonParser.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/JsonParserTest.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/output1.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/output2.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/readme.txt" />
-      <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\JsonParser\JsonParser\output1.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\JsonParser\JsonParser\output2.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\SimpleParser.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\SimpleParserTest.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\Test.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\Test1.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\content.txt" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\dump.txt" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\test.txt" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\test_gbk.txt" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\test_json.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser.rar" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser.rar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="70394fa9-c2dc-4dab-9ee4-e83c1fe61821" name="Default" comment="" />
     <ignored path="JsonParser.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,12 +32,12 @@
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_getitem.coverage" NAME="Unittest MyTestCase.test_getitem Coverage Results" MODIFIED="1415596014346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_dump_dict.coverage" NAME="Unittest MyTestCase.test_dump_dict Coverage Results" MODIFIED="1415174007118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$JsonParser.coverage" NAME="JsonParser Coverage Results" MODIFIED="1415610442688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JsonParser$FailTest.coverage" NAME="FailTest Coverage Results" MODIFIED="1415583234985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_control.coverage" NAME="Unittest MyTestCase.test_control Coverage Results" MODIFIED="1415594006666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$FailTest.coverage" NAME="FailTest Coverage Results" MODIFIED="1415583234985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$SimpleParser.coverage" NAME="SimpleParser Coverage Results" MODIFIED="1415238761426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_list.coverage" NAME="Unittest MyTestCase.test_list Coverage Results" MODIFIED="1415170814911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_load_json.coverage" NAME="Unittest MyTestCase.test_load_json Coverage Results" MODIFIED="1415175727900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_dumpDict.coverage" NAME="Unittest MyTestCase.test_dumpDict Coverage Results" MODIFIED="1415594688578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_load_json.coverage" NAME="Unittest MyTestCase.test_load_json Coverage Results" MODIFIED="1415175727900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_getstring.coverage" NAME="Unittest MyTestCase.test_getstring Coverage Results" MODIFIED="1415548297125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_number.coverage" NAME="Unittest MyTestCase.test_number Coverage Results" MODIFIED="1415166433489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JsonParser$Unittest_MyTestCase_test_getobject.coverage" NAME="Unittest MyTestCase.test_getobject Coverage Results" MODIFIED="1415597217665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -623,9 +602,6 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -647,6 +623,9 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -778,9 +757,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14978679" sideWeight="0.49913043" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28217426" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29601228" sideWeight="0.7394085" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
