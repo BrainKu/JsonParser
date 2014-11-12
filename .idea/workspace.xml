@@ -6,6 +6,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70394fa9-c2dc-4dab-9ee4-e83c1fe61821" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/FailTest.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/JSON.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/JsonParser.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/JsonParserTest.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/output1.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/output2.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JsonParser/郑鑫伟-JsonParser/JsonParser/readme.txt" />
       <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\JsonParser\JsonParser\output1.json" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\JsonParser\JsonParser\output2.json" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\gzs3049\PycharmProjects\JsonParser\SimpleParser.py" afterPath="" />
@@ -143,8 +150,8 @@
       <file leaf-file-name="app.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://C:/Python27/Lib/site-packages/flask/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21649484" vertical-offset="491" max-vertical-offset="30991">
-              <caret line="65" column="6" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.7400722" vertical-offset="491" max-vertical-offset="30991">
+              <caret line="78" column="27" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -733,10 +740,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34449244" sideWeight="0.49960032" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34449244" sideWeight="0.49960032" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14925373" sideWeight="0.49913043" order="1" side_tool="false" content_ui="tabs" />
@@ -744,9 +751,9 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29637527" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39891893" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5008696" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29601228" sideWeight="0.26059154" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29601228" sideWeight="0.26059154" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40864864" sideWeight="0.7394085" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1188,8 +1195,8 @@
     </entry>
     <entry file="file://C:/Python27/Lib/site-packages/flask/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21649484" vertical-offset="491" max-vertical-offset="30991">
-          <caret line="65" column="6" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.7400722" vertical-offset="491" max-vertical-offset="30991">
+          <caret line="78" column="27" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
           <folding />
         </state>
       </provider>
