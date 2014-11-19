@@ -100,8 +100,6 @@ class JsonParserTest(unittest.TestCase):
         for s in slist:
             self.jp.load(s)
             self.assertEqual(self.jp.dictcontent, json.loads(s))
-        self.jp.load(final)
-        print self.jp.dictcontent
 
     def test_dump(self):
         slist = [r'''{}''',
@@ -225,13 +223,16 @@ class JsonParserTest(unittest.TestCase):
         expected = json.loads(JSON)
         self.assertEqual(0, cmp(expected, self.jp.dictcontent))
 
+    def test_final(self):
+        for tub in finaljson:
+            self.jp.load(tub[0])
+            assert self.jp.dictcontent[tub[1]] == tub[2]
+            print tub[1], tub[2]
+
 
 if __name__ == '__main__':
     unittest.main()
 
-final = r'''
-    {"c" : { "ab{" : "}123", "\\\\a[": "]\\\\", "cc": 123 }}
-'''
 finaljson = [
     ('{"a":123}', "a", 123),  # 数字
     ('{"a":"hello"}', "a", "hello"),  # 字符串
@@ -239,17 +240,17 @@ finaljson = [
     ('{"a": 1e1}', "a", 10),  # 数字
     ('{"a": "\\u6709\\u611f\\u800c\\u53d1\\u3002\\u3002"}', "a", u"\u6709\u611f\u800c\u53d1\u3002\u3002"),  # unicode
     ('{"a  ": 123}', "a  ", 123),  # 空格和tab
-    ('{ "a" : 123    	}', "a", 123),  #空格和tab
-    ('{"a":[1,2,3]}', "a", [1, 2, 3]),  #数组
-    ('{"a":[1,2,"aaa"]}', "a", [1, 2, "aaa"]),  #数组
-    ('{"a": "a\\\\"}', "a", "a\\"),  #反斜杠
+    ('{ "a" : 123    	}', "a", 123),  # 空格和tab
+    ('{"a":[1,2,3]}', "a", [1, 2, 3]),  # 数组
+    ('{"a":[1,2,"aaa"]}', "a", [1, 2, "aaa"]),  # 数组
+    ('{"a": "a\\\\"}', "a", "a\\"),  # 反斜杠
     ('{"d{": "}dd"}', "d{", "}dd"),  # {}
     ('{"d,": ",dd", "a": [1,2,3]}', "d,", ",dd"),  # ,
     ('{"d\\\"": "\\\"dd", "a": [1,2,3]}', "d\"", "\"dd"),  # "
-    ('{"a": {"a": {"a": 123}}}', "a", {"a": {"a": 123}}),  #嵌套
-    ('{"a": {"a": {"a": 123, "b": [1,2,3]}}}', "a", {"a": {"a": 123, "b": [1, 2, 3]}}),  #嵌套
+    ('{"a": {"a": {"a": 123}}}', "a", {"a": {"a": 123}}),  # 嵌套
+    ('{"a": {"a": {"a": 123, "b": [1,2,3]}}}', "a", {"a": {"a": 123, "b": [1, 2, 3]}}),  # 嵌套
     ("""
-    { "ab{" : "}123", "\\\\a[": "]\\\\", "cc": 123 }
-""", "cc", 123),  #复杂类型
+{ "ab{" : "}123", "\\\\a[": "]\\\\", "cc": 123 }
+""", "cc", 123),  # 复杂类型
 ]
 
